@@ -1,0 +1,98 @@
+#include<stdio.h>
+int main()
+{
+    int a[10][2],b[10][2],c[10][2],i=0,j=0,k=0,m,n;
+    printf("enter the number of elements in first polynomial:");
+    scanf("%d",&n);
+    printf("enter the number of elements in second polynomial:");
+    scanf("%d",&m);
+    printf("enter the value of first polynomial\n");
+    for(i=0;i<n;i++)
+    {
+        printf("enter the coefficent and exponent of the %d th term:",i);
+        scanf("%d%d",&a[i][0],&a[i][1]);
+    }
+    printf("enter the values of second polynomial:\n");
+    for(j=0;j<m;j++)
+    {
+        printf("enter coefficient and exponenet of the %d th term:",j);
+        scanf("%d%d",&b[j][0],&b[j][1]);
+    }
+    printf("first polynomial is:\n");
+    for(i=0;i<n;i++)
+    {
+        if(i<n-1)
+        {
+            printf("%d^%d+",a[i][0],a[i][1]);
+        }
+        else
+        {
+            printf("%d^%d",a[i][0],a[i][1]);
+        }
+    }
+    printf("second polynomial is:\n");
+    for(j=0;j<m;j++)
+    {
+        if(j<m-1)
+        {
+            printf("%d^%d+",b[j][0],b[j][1]);
+        }
+        else
+        {
+            printf("%d^%d",b[j][0],b[j][1]);
+        }
+    }
+    i=0;
+    j=0;
+    while(i<n&&j<m)
+    {
+        if(a[i][1]==b[i][1])
+        {
+            c[k][0]=a[i][0]+b[j][0];
+            c[k][1]=a[i][1];
+            i++;
+            j++;
+            k++;
+        }
+        else if(a[i][1]>b[j][1])
+        {
+            c[k][0]=a[i][0];
+            c[k][1]=a[i][1];
+            i++;
+            k++;
+        }
+        else
+        {
+            c[k][0]=b[j][0];
+            c[k][1]=b[j][1];
+            i++;
+            k++;
+        }
+    }
+    while(i<n)
+    {
+        c[k][0]=a[i][0];
+        c[k][1]=a[i][1];
+        i++;
+        k++;
+    }
+    while(j<n)
+    {
+        c[k][0]=b[j][0];
+        c[k][1]=b[j][1];
+        i++;
+        k++;
+    }
+    printf("resultant polynomial\n");
+    for(i=0;i<k;i++)
+    {
+        if(i<k-1)
+        {
+            printf("%d^%d+",c[i][0],c[i][1]);
+        }
+        else
+        {
+            printf("%d^%d\n",c[i][0],c[i][1]);
+        }
+    }
+}
